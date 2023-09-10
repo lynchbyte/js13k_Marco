@@ -1,15 +1,11 @@
 import * as TZ from "three" 
 
 import { scene, clickable } from './script.js' 
-
 import { getClicked } from './gameClicked.js' 
 
 //for vr controller selecting
 export const raycasterXR = new TZ.Raycaster() 
-//export const intersected = [] 
 export const tempMatrix = new TZ.Matrix4() 
-//raycasterXR.layers.set(1)
-//const intersected = [] 
 
 let INT2 
 
@@ -33,10 +29,6 @@ export function intersectObjects(controller) {
 
         INT2.material.emissive.setHex(0xff0000) 
 
-    //    console.log('INT2', INT2)
-
- 
-
     } else {
 
         if (INT2) INT2.material.emissive.setHex(INT2.currentHex) 
@@ -46,10 +38,6 @@ export function intersectObjects(controller) {
     }
 
 }
-
-
-
-
 
 
 //2
@@ -77,9 +65,6 @@ export function onSelectStart(e) {
     const clickXRArr = getIntersections(controller) 
 
     if (clickXRArr.length > 0) {
-
-       // const intersectedXR = clickXRArr[0] 
-       // const intersectedXRObject = intersectedXR.object 
 
         getClicked(clickXRArr) 
 
