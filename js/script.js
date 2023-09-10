@@ -1,10 +1,4 @@
-//  python -m http.server
 
-/**
- * 
- * @author Shauna Lynch 
- * 
-**/
 
 import * as TZ from "three" 
 
@@ -103,6 +97,8 @@ document.body.appendChild(renderer.domElement)
 export const ctr1 = renderer.xr.getController(0) //for vr contrller
 export const ctr2 = renderer.xr.getController(1) //for vr controller
 
+export const baseReferenceSpaceArr = []
+let baseReferenceSpace 
 
 //////////////////////
 ////EVENT LISTENERS///
@@ -115,9 +111,6 @@ window.addEventListener('resize', onWindowResize)
 document.addEventListener('click', onPointerClick);
 document.addEventListener('mousemove', onPointerMove);
 
-
-export const baseReferenceSpaceArr = [] 
-
 renderer.xr.addEventListener('sessionstart', xrSessionStarted) 
 
 renderer.xr.addEventListener('sessionend', xrSessionEnded) 
@@ -125,13 +118,11 @@ renderer.xr.addEventListener('sessionend', xrSessionEnded)
 const startButton = document.getElementById("startButton") 
 startButton.addEventListener("click", startFunction) 
 
-
 const titleText = createText('Marco...?', 0.4, 'Times New Roman') 
 titleText.position.set(0, 0.75, zVal) 
 titleText.name = "Title" 
 
 camera.add(titleText) 
-
 
 addVRFloor() 
 
@@ -198,7 +189,7 @@ export function startFunction() {
 
 }
 
-let baseReferenceSpace 
+
 
 function xrSessionStarted(event) {
 
@@ -245,13 +236,13 @@ function render(timestamp, frame) {
 
     }
 
-    //at start, rotate castleGroupParent
+    //rotate castleGroupParent
     if (chapters.one_title === true) {
 
         castleGroupParent.rotation.y += delta * 0.1
     }
 
-    //at start, lerp camera to start position
+    //start clicked, lerp camera to start position
     if (chapters.two_start == true) {
 
         alpha += delta 
@@ -259,6 +250,7 @@ function render(timestamp, frame) {
         camera.position.lerp(new TZ.Vector3(0, 0, 0), alpha * 0.005)
     }
 
+    //move player
     if (chapters.three_setRef == true) {
 
         alpha += delta 
