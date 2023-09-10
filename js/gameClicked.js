@@ -46,14 +46,11 @@ export function getClicked(intersection) {
 
     if (intersection.length > 0) {
 
-        //  let plane = intersection[0].object.name;
-
         let type = intersection[0].object.userData.type;
 
         switch (type) {
 
            case 'enterVR':
-
 
                 startSession('immersive-vr');
 
@@ -71,8 +68,6 @@ export function getClicked(intersection) {
                 clueText.userData.type = "Clue";
                 clueText.name = "clue"
                 camera.add(clueText);
-
-
 
               break;
 
@@ -105,6 +100,7 @@ export function getClicked(intersection) {
 
 
                 break;
+                
 
             case 'Clue':
 
@@ -120,9 +116,9 @@ export function getClicked(intersection) {
                 }
 
                 break;
+                
 
             case 'Door':
-
 
                 zzfx(...[, , 471, , .09, .47, 4, 1.06, -6.7, , , , , .9, 61, .1, , .82, .09, .13])//⚡
 
@@ -165,23 +161,18 @@ export function getClicked(intersection) {
                         });
 
                         gameOver();
-
-
                     }
 
                     if (box.intersectsBox(poloArr[0]) == true) {
 
-                        //WINNER TIME'
+                        //WINNER TIME
                         camera.add(poloArr[1]);
                         poloArr[1].translateZ(-1.5);
 
-                        //
+                        
                         zzfx(...[, , 80, .3, .4, .7, 2, .1, -0.73, 3.42, -430, .09, .17, , , , .19])//🌟
 
                         gameOver();
-
-
-
 
                     }
 
@@ -191,20 +182,13 @@ export function getClicked(intersection) {
                 }
 
                 break;
+                
 
             case 'Exit':
 
                 location.reload();
 
                 break;
-
-
-            // case 'Info':
-
-
-            //     break;
-
-
 
             default:
 
