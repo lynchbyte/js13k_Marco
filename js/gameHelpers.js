@@ -54,63 +54,6 @@ export function makeButtonMesh(x, y, z, color) {
 
 }
 
-// export function makeButtonGroup( //TODO make whole button lightup on selection
-//     textUp, textUpHeight, posUpx, posUpy, posUpz,
-//     textDown, textDownHeight, offset,
-//     parent, udType) {
-
-//     let upperText = createText(textUp, textUpHeight) 
-//     upperText.position.set(posUpx, posUpy, posUpz) 
-//     upperText.userData.type = udType 
-
-//     let lowerText = createText(textDown, textDownHeight) 
-//     lowerText.position.clone(upperText) 
-//     lowerText.translateY(offset) 
-//     lowerText.userData.type = udType 
-
-//     upperText.add(lowerText) 
-
-//     let newGroup = new TZ.Group() 
-//     //  newGroup.userData.type = udType 
-//     newGroup.add(upperText) 
-//     //clickable.push(newGroup) 
-//     parent.add(newGroup) 
-// }
-
-
-// export function makeEmojiSprite(message, emojiSize = 2.5) {
-//     let emojiwidth = 80 
-//     let fontface = "Arial" 
-//     let fontsize = emojiwidth * 0.75 
-
-//     let canvas = document.createElement("canvas") 
-//     canvas.width = emojiwidth 
-//     canvas.height = emojiwidth 
-//     let context = canvas.getContext("2d") 
-//     context.font = `Bold ${fontsize}px ${fontface}` 
-//     // context.font = `Bold ${fontsize}px ${fontface}` 
-//     context.lineWidth = 1 
-//     context.fillText(message, -2, fontsize - 3) 
-
-//     let texture = new TZ.CanvasTexture(canvas) 
-//     texture.needsUpdate = true 
-
-//     let spriteMaterial = new TZ.SpriteMaterial({
-//         map: texture,
-//         transparent: false,
-//         alphaTest: 0.05
-//     }) 
-//     let sprite = new TZ.Sprite(spriteMaterial) 
-//     let factorS = 0.05 
-//     sprite.scale.set(
-//         emojiSize * 0.5 * fontsize * factorS,
-//         emojiSize * 0.45 * fontsize * factorS,
-//         0.25 * fontsize * factorS
-//     ) 
-//     // clickable.push(sprite) 
-//     return sprite 
-// }
-
 
 export function removeOb(name, parent) {
 
@@ -134,39 +77,6 @@ export function slp(time) {
 }
 
 
-export function addMarkers() {
-
-    const g = new TZ.BoxGeometry(0.2, 0.2, 0.2) 
-    const m = new TZ.MeshPhongMaterial() 
-
-    const mesh = new TZ.Mesh(g, m) 
-    mesh.position.set(0, 0, 0) 
-    scene.add(mesh) 
-
-    const mesh2 = mesh.clone() 
-    mesh2.position.set(0, 1, 0) 
-    scene.add(mesh2) 
-
-    const mesh3 = mesh.clone() 
-    mesh3.position.set(0, 2, 0) 
-    scene.add(mesh3) 
-
-    ////camera replica
-    const g2 = new TZ.SphereGeometry(0.035, 32, 16) 
-    const m2 = new TZ.MeshPhongMaterial({ color: 'blue' }) 
-    const spMesh = new TZ.Mesh(g2, m2) 
-    scene.add(spMesh) 
-
-
-    const h = 0.3 
-    const g3 = new TZ.ConeGeometry(0.1, h, 16) 
-    const m3 = new TZ.MeshPhongMaterial({ color: 'pink' }) 
-    const coneMesh = new TZ.Mesh(g3, m3) 
-    coneMesh.rotation.set((90 * (Math.PI / 180)), (0 * (Math.PI / 180)), (0 * (Math.PI / 180))) 
-    coneMesh.translateY(-h / 2) 
-    scene.add(coneMesh) 
-
-}
 
 export function addVRFloor() {
 
